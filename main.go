@@ -89,7 +89,7 @@ func main() {
 	router := router()
 	srv := &http.Server{
 		Handler:      router,
-		Addr:         "0.0.0.0:14889",
+		Addr:         "0.0.0.0:80",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
