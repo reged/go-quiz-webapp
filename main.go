@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -78,6 +79,10 @@ func rebuildHandler(w http.ResponseWriter, r *http.Request) {
 	log.Print("Rebuilded")
 }
 
+func testHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello\n")
+}
+
 // Route declaration
 func router() *mux.Router {
 	r := mux.NewRouter()
@@ -87,6 +92,7 @@ func router() *mux.Router {
 	r.HandleFunc("/login", loginPageHandler).Methods("GET")
 	r.HandleFunc("/login", loginHandler).Methods("POST")
 	r.HandleFunc("/rebuild", rebuildHandler).Methods("GET")
+	r.HandleFunc("/test", testHandler).Methods("GET")
 	fileServer := http.FileServer(http.Dir("./static"))
 	r.PathPrefix("/").Handler(http.StripPrefix("/static", fileServer))
 	return r
