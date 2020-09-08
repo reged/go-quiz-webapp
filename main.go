@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 )
 
@@ -88,7 +89,7 @@ func main() {
 	router := router()
 	srv := &http.Server{
 		Handler:      router,
-		Addr:         "127.0.0.1:14889",
+		Addr:         "0.0.0.0:14889",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
