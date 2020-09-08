@@ -12,11 +12,13 @@ import (
 func (c Controller) RegisterPageHandler(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("./web/register.html")
 	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		log.Println("Error parse template :", err)
 		return
 	}
 	err = t.Execute(w, nil)
 	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		log.Println("Error executing template :", err)
 		return
 	}
@@ -25,11 +27,13 @@ func (c Controller) RegisterPageHandler(w http.ResponseWriter, r *http.Request) 
 func (c Controller) LoginPageHandler(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("./web/login.html")
 	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		log.Println("Error parse template :", err)
 		return
 	}
 	err = t.Execute(w, nil)
 	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		log.Println("Error executing template :", err)
 		return
 	}
@@ -41,8 +45,10 @@ func (c Controller) RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	userPassword := r.FormValue("userpassword")
 	_, err := database.CreateUser(c.Db, userName, userPassword)
 	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
 		log.Printf("Registering new user failed: %s", err.Error())
 	} else {
+		w.WriteHeader(http.StatusInternalServerError)
 		log.Printf("User \"%s\" registered succefully", userName)
 	}
 	http.Redirect(w, r, "/", http.StatusFound)
@@ -53,7 +59,8 @@ func (c Controller) LoginHandler(w http.ResponseWriter, r *http.Request) {
 	userPassword := r.FormValue("userpassword")
 	result, err := database.CheckUserPassword(c.Db, userName, userPassword)
 	if err != nil {
-		panic(err.Error())
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Printf("error while logging in")
 	}
 	if result {
 		log.Printf("User \"%s\" logged in succesfully", userName)
