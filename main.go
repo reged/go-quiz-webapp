@@ -73,7 +73,10 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func rebuildHandler(w http.ResponseWriter, r *http.Request) {
-	_ = exec.Command("/bin/sh", "./rebuild.sh")
+	log.Print("Rebuild started...")
+	_ = exec.Command("/bin/bash", "./rebuild.sh")
+	http.Redirect(w, r, "/", http.StatusFound)
+	log.Print("Rebuilded")
 }
 
 // Route declaration
