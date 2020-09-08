@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"github.com/hackersandslackers/golang-helloworld/internal"
 	"html/template"
 	"log"
 	"net/http"
@@ -12,7 +13,7 @@ import (
 )
 
 var db *sql.DB
-var wp *WikiPage
+var wp *internal.WikiPage
 
 func registerPageHandler(w http.ResponseWriter, r *http.Request) {
 	t, err := template.ParseFiles("./register.html")
@@ -44,7 +45,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 
 	username := r.FormValue("username")
 	userpassword := r.FormValue("userpassword")
-	_, err := CreateUser(db, username, userpassword)
+	_, err := internal.CreateUser(db, username, userpassword)
 	if err != nil {
 		log.Printf("Registering new user failed: %s", err.Error())
 	} else {
@@ -56,7 +57,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 func loginHandler(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
 	userpassword := r.FormValue("userpassword")
-	result, err := CheckUserPassword(db, username, userpassword)
+	result, err := internal.CheckUserPassword(db, username, userpassword)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -93,7 +94,7 @@ func main() {
 		ReadTimeout:  15 * time.Second,
 	}
 
-	db = CreateConn("quiz_admin", "123", "quiz")
+	db = internal.CreateConn("quiz_admin", "123", "quiz")
 	// wp = GetWikiPage(db, "test")
 	// _ = UpdateWikiPage(db, "test", []byte("Hello"))
 
