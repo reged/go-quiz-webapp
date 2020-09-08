@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/hackersandslackers/golang-helloworld/internal/controller"
+	"github.com/hackersandslackers/golang-helloworld/internal/presentation/controller"
 	"net/http"
 )
 

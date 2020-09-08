@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/hackersandslackers/golang-helloworld/internal/controller"
 	"github.com/hackersandslackers/golang-helloworld/internal/database"
-	"github.com/hackersandslackers/golang-helloworld/internal/router"
+	"github.com/hackersandslackers/golang-helloworld/internal/presentation/controller"
+	"github.com/hackersandslackers/golang-helloworld/internal/presentation/router"
+	"github.com/hackersandslackers/golang-helloworld/internal/service"
 	"log"
 	"net/http"
 	"time"
@@ -19,7 +20,11 @@ func main() {
 	if err != nil {
 		log.Fatal("Can't connect database")
 	}
-	c := &controller.Controller{Db: db}
+	quizService := &service.QuizService{}
+	c := &controller.Controller{
+		Db:          db,
+		QuizService: quizService,
+	}
 
 	r := router.InitRouter(c)
 	srv := &http.Server{
