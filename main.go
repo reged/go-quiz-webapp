@@ -104,6 +104,7 @@ func main() {
 		ReadTimeout:  15 * time.Second,
 	}
 
+	log.Print("Server started\n")
 	db = internal.CreateConn("quiz_admin", "123", "quiz")
 	// wp = GetWikiPage(db, "test")
 	// _ = UpdateWikiPage(db, "test", []byte("Hello"))
