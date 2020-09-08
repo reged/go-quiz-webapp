@@ -75,7 +75,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 func rebuildHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusFound)
 	log.Print("Rebuild started...")
-	_ = exec.Command("/bin/bash", "./rebuild.sh")
+	_ = exec.Command("/bin/bash", "-x ./rebuild.sh")
 	log.Print("Rebuilded")
 }
 
