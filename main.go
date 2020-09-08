@@ -2,11 +2,12 @@ package main
 
 import (
 	"database/sql"
-	"github.com/hackersandslackers/golang-helloworld/internal"
 	"html/template"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/hackersandslackers/golang-helloworld/internal"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
@@ -16,7 +17,7 @@ var db *sql.DB
 var wp *internal.WikiPage
 
 func registerPageHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("./register.html")
+	t, err := template.ParseFiles("./web/register.html")
 	if err != nil {
 		log.Println("Error parse template :", err)
 		return
@@ -29,7 +30,7 @@ func registerPageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func loginPageHandler(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("./login.html")
+	t, err := template.ParseFiles("./web/login.html")
 	if err != nil {
 		log.Println("Error parse template :", err)
 		return
