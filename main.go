@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os/exec"
 	"time"
 
 	"github.com/hackersandslackers/golang-helloworld/internal"
@@ -71,6 +72,10 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func rebuildHandler(w http.ResponseWriter, r *http.Request) {
+	_ = exec.Command("/bin/sh", "./rebuild.sh")
+}
+
 // Route declaration
 func router() *mux.Router {
 	r := mux.NewRouter()
@@ -79,6 +84,7 @@ func router() *mux.Router {
 	r.HandleFunc("/register", registerHandler).Methods("POST")
 	r.HandleFunc("/login", loginPageHandler).Methods("GET")
 	r.HandleFunc("/login", loginHandler).Methods("POST")
+	r.HandleFunc("/rebuild", rebuildHandler).Methods("GET")
 	fileServer := http.FileServer(http.Dir("./static"))
 	r.PathPrefix("/").Handler(http.StripPrefix("/static", fileServer))
 	return r
