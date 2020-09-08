@@ -1,4 +1,4 @@
-package internal
+package models
 
 import (
 	"encoding/json"
@@ -23,7 +23,7 @@ func (wp WikiPage) save() error {
 	var test WikiPage
 	err := json.Unmarshal(jsonData, &test)
 	if err != nil {
-		fmt.Println("error:", err)
+		return err
 	}
 	fmt.Printf("%+v", test)
 	return nil
