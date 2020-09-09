@@ -2,11 +2,12 @@ package controller
 
 import (
 	"fmt"
-	"github.com/hackersandslackers/golang-helloworld/internal/database"
 	"html/template"
 	"log"
 	"net/http"
 	"os/exec"
+
+	"github.com/reged/go-quiz-webapp/internal/database"
 )
 
 func (c Controller) RegisterPageHandler(w http.ResponseWriter, r *http.Request) {

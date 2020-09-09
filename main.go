@@ -1,13 +1,15 @@
 package main
 
 import (
-	"github.com/hackersandslackers/golang-helloworld/internal/database"
-	"github.com/hackersandslackers/golang-helloworld/internal/presentation/controller"
-	"github.com/hackersandslackers/golang-helloworld/internal/presentation/router"
-	"github.com/hackersandslackers/golang-helloworld/internal/service"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/reged/go-quiz-webapp/internal/database"
+
+	"github.com/reged/go-quiz-webapp/internal/presentation/controller"
+	"github.com/reged/go-quiz-webapp/internal/presentation/router"
+	"github.com/reged/go-quiz-webapp/internal/service"
 
 	_ "github.com/go-sql-driver/mysql"
 )

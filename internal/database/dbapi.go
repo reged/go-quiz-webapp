@@ -3,9 +3,11 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/hackersandslackers/golang-helloworld/internal/models"
 	"log"
+
+	// Load mysql driver
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/reged/go-quiz-webapp/internal/models"
 )
 
 // CreateConn Create connection to local MySQL DB with login and pass
