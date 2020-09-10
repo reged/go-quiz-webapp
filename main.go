@@ -16,7 +16,7 @@ import (
 func main() {
 
 	log.Print("Server started\n")
-	db, err := database.CreateConn("quiz_admin", "123", "quiz")
+	db, err := database.CreateConn("./db.sqlite3")
 	if err != nil {
 		log.Fatal("Can't connect database")
 	}
