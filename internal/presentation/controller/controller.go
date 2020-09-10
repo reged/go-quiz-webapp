@@ -2,7 +2,8 @@ package controller
 
 import (
 	"database/sql"
-	"github.com/hackersandslackers/golang-helloworld/internal/service"
+
+	"github.com/reged/go-quiz-webapp/internal/service"
 )
 
 type Controller struct {

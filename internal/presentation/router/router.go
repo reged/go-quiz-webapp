@@ -1,9 +1,10 @@
 package router
 
 import (
-	"github.com/gorilla/mux"
-	"github.com/hackersandslackers/golang-helloworld/internal/presentation/controller"
 	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/reged/go-quiz-webapp/internal/presentation/controller"
 )
 
 // Route declaration
