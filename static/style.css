@@ -1,0 +1,19 @@
+body {
+    background-color: darkgrey;
+    background-image: url('/static/forest.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 200px;
+}
+
+#reg {
+    text-align: center;
+}
+
+#submit {
+    margin-top: 1em;
+}
