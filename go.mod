@@ -1,4 +1,4 @@
-module github.com/hackersandslackers/golang-helloworld
+module github.com/reged/go-quiz-webapp
 
 go 1.15
 
