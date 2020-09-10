@@ -2,22 +2,21 @@ package database
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 
-	// Load mysql driver
-	_ "github.com/go-sql-driver/mysql"
+	// Load sqlite3 driver
+	_ "github.com/mattn/go-sqlite3"
+
 	"github.com/reged/go-quiz-webapp/internal/models"
 )
 
-// CreateConn Create connection to local MySQL DB with login and pass
-func CreateConn(uname string, upass string, dbname string) (*sql.DB, error) {
-	// db, err := sql.Open("mysql", "quiz_admin:123@tcp(localhost:3306)/quiz")
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(localhost:3306)/%s", uname, upass, dbname))
+// CreateConn Create connection to local SQLite3 DB
+func CreateConn(dbpath string) (*sql.DB, error) {
+	db, err := sql.Open("sqlite3", dbpath)
 	if err != nil {
+		log.Fatal(err)
 		return nil, err
 	}
-	log.Printf("Connected to local db with name %s", dbname)
 	err = db.Ping()
 	if err != nil {
 		return nil, err
