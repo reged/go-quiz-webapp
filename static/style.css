@@ -17,3 +17,21 @@ h1 {
 #submit {
     margin-top: 1em;
 }
+
+.task {
+    text-align: center;
+}
+
+.task_id, .task_title, .task_desc {
+    background-color: white;
+    display: inline;
+    border-style: solid;
+}
+
+/* .task_title {
+    display: inline;
+}
+
+.task_desc {
+    display: inline;
+} */
