@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Личный кабинет</title>
+</head>
+<body>
+<h1>Личный кабинет пользователя</h1>
+
+{{range .}}
+<div class="task">
+    <div class="task task_id">
+        Номер: {{.ID}}
+    </div>
+    <div class="task task_title">
+        Название: {{.Title}}
+    </div>
+    <div class="task task_desc">
+        Описание: {{.Description}}
+    </div>
+</div>
+
+{{else}}<div><strong>no rows</strong></div>
+{{end}}
+
+</body>
+</html>

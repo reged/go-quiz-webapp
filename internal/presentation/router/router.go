@@ -15,8 +15,7 @@ func InitRouter(c *controller.Controller) *mux.Router {
 	r.HandleFunc("/register", c.RegisterHandler).Methods("POST")
 	r.HandleFunc("/login", c.LoginPageHandler).Methods("GET")
 	r.HandleFunc("/login", c.LoginHandler).Methods("POST")
-	r.HandleFunc("/rebuild", c.RebuildHandler).Methods("GET")
-	r.HandleFunc("/test", c.TestHandler).Methods("GET")
+	r.HandleFunc("/userarea", c.UserAreaHandler).Methods("GET")
 	fileServer := http.FileServer(http.Dir("./static"))
 	r.PathPrefix("/").Handler(http.StripPrefix("/static", fileServer))
 	return r
